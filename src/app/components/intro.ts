@@ -54,8 +54,8 @@ import { CONTENT } from '../website-content';
       flex-shrink: 0;
       width: 280px;
       height: 380px;
-      /* Arch shape */
-      border-radius: 200px 200px 20px 20px;
+      /* Arch shape REMOVED - Squared off */
+      border-radius: 0;
       overflow: hidden;
       border: 6px solid white;
       box-shadow: var(--shadow-md);

@@ -10,77 +10,69 @@ import { CONTENT } from '../website-content';
   template: `
     <section class="rsvp-section container">
       <div class="rsvp-card glass-card">
-        <h2 class="section-title">RSVP</h2>
-        <p class="subtitle">Kindly respond by {{ content.event.rsvpDeadline }}</p>
+        <div class="rsvp-content-wrapper">
+          <h2 class="section-title">RSVP</h2>
+          <p class="subtitle">Kindly respond by {{ content.event.rsvpDeadline }}</p>
 
-        <!-- Success Message -->
-        <div *ngIf="submitted" class="success-message">
-          <div class="success-icon">💌</div>
-          <h3>Thank You!</h3>
-          <p>Your response has been recorded. We can't wait to see you!</p>
+          <!-- Success Message -->
+          <div *ngIf="submitted" class="success-message">
+            <div class="success-icon">💌</div>
+            <h3>Thank You!</h3>
+            <p>Your response has been recorded. We can't wait to see you!</p>
+          </div>
+
+          <!-- RSVP Form -->
+          <form *ngIf="!submitted" [formGroup]="rsvpForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="name">Full Name <span class="required">*</span></label>
+              <input type="text" id="name" formControlName="name" placeholder="Enter your full name"
+                [class.error]="isFieldInvalid('name')">
+              <div class="error-msg" *ngIf="isFieldInvalid('name')">
+                Name is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Will you join us? <span class="required">*</span></label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" value="yes" formControlName="attending">
+                  <span class="radio-tile">
+                    <span class="emoji">🥰</span>
+                    <span>Yes, joyfully!</span>
+                  </span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" value="no" formControlName="attending">
+                  <span class="radio-tile">
+                    <span class="emoji">😔</span>
+                    <span>Regretfully no</span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-msg" *ngIf="isFieldInvalid('attending')">
+                Please select an option
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="rsvpForm.get('attending')?.value === 'yes'">
+              <label for="guests">Number of Guests (Max 5)</label>
+              <input type="number" id="guests" formControlName="guests" min="1" max="5"
+                (input)="limitGuests($event)">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message for the Baby (Optional)</label>
+              <textarea id="message" formControlName="message" rows="4"
+                placeholder="Write a sweet note..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" [disabled]="rsvpForm.invalid || isSubmitting">
+              {{ isSubmitting ? 'Sending...' : 'Submit RSVP' }}
+            </button>
+          </form>
         </div>
-
-        <!-- RSVP Form -->
-        <form *ngIf="!submitted" [formGroup]="rsvpForm" (ngSubmit)="onSubmit()">
-
-          <div class="form-group">
-            <label for="name">Full Name <span class="required">*</span></label>
-            <input type="text" id="name" formControlName="name" placeholder="Enter your full name"
-              [class.error]="isFieldInvalid('name')">
-            <div class="error-msg" *ngIf="isFieldInvalid('name')">
-              Name is required
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Will you join us? <span class="required">*</span></label>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" value="yes" formControlName="attending">
-                <span class="radio-tile">
-                  <span class="emoji">🥰</span>
-                  <span>Yes, joyfully!</span>
-                </span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" value="no" formControlName="attending">
-                <span class="radio-tile">
-                  <span class="emoji">😔</span>
-                  <span>Regretfully no</span>
-                </span>
-              </label>
-            </div>
-            <div class="error-msg" *ngIf="isFieldInvalid('attending')">
-              Please select an option
-            </div>
-          </div>
-
-          <div class="form-group" *ngIf="rsvpForm.get('attending')?.value === 'yes'">
-            <label for="guests">Number of Guests (Max 5)</label>
-            <input type="number" id="guests" formControlName="guests" min="1" max="5"
-              (input)="limitGuests($event)">
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message for the Baby (Optional)</label>
-            <textarea id="message" formControlName="message" rows="4"
-              placeholder="Write a sweet note..."></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary" [disabled]="rsvpForm.invalid || isSubmitting">
-            {{ isSubmitting ? 'Sending...' : 'Submit RSVP' }}
-          </button>
-        </form>
-    <!-- Success Modal -->
-    <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
-      <div class="modal-content glass-card" (click)="$event.stopPropagation()">
-        <div class="success-icon">💌</div>
-        <h3>RSVP Confirmed!</h3>
-        <p>Thank you, {{ storedName || 'Guest' }}!</p>
-        <p>We received your response.</p>
-        <button class="btn-primary" (click)="closeModal()">Close</button>
-      </div>
-    </div>
       </div>
     </section>
   `,
@@ -93,14 +85,22 @@ import { CONTENT } from '../website-content';
 
     .rsvp-card {
       width: 100%;
-      max-width: 600px;
-      padding: 3rem;
+      max-width: 1200px; /* Match Location Container */
+      padding: 4rem 2rem;
       background: white; /* Fallback */
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(15px);
-      border-radius: 0; /* Square corners */
+      border-radius: 0; 
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: var(--shadow-lg);
+      transition: all 0.5s ease;
+      /* Ensure it feels like the location container */
+    }
+
+    .rsvp-content-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .section-title {
@@ -229,65 +229,41 @@ import { CONTENT } from '../website-content';
       }
     }
 
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 3rem;
-      border-radius: 0;
-      text-align: center;
-      max-width: 90%;
-      width: 400px;
-      box-shadow: var(--shadow-lg);
-      animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      
-      h3 {
-        color: var(--color-primary);
-        font-family: var(--font-primary);
-        font-size: 2rem;
-        margin: 1rem 0;
-      }
-      
-      p { margin-bottom: 2rem; color: var(--color-text); }
-      
-      .btn-primary { width: auto; min-width: 200px; }
-    }
-    
-    @keyframes scaleUp {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
+    /* Success Message Area */
     .success-message {
       text-align: center;
-      padding: 3rem;
+      padding: 4rem 2rem;
+      animation: fadeIn 0.8s ease-out;
       
       .success-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
       h3 {
-        font-size: 2rem;
+        font-size: 3rem;
         color: var(--color-primary);
-        margin-bottom: 1rem;
-        font-family: var(--font-primary);
+        margin-bottom: 1.5rem;
+        font-family: var(--font-heading);
       }
       
-      p { color: var(--color-text); }
+      p { 
+        color: var(--color-text); 
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 640px) {
@@ -304,12 +280,6 @@ import { CONTENT } from '../website-content';
          padding-left: 0;
          padding-right: 0;
       }
-      
-      .modal-content { /* Adjust modal for mobile */
-         padding: 2rem;
-         width: 85%;
-         border-radius: 20px;
-      }
     }
   `]
 })
@@ -317,10 +287,7 @@ export class RsvpComponent {
   content = CONTENT;
   submitted = false;
   isSubmitting = false;
-  showModal = false;
   rsvpForm: FormGroup;
-  // storedName to show in modal after reset
-  storedName = '';
 
   constructor(private fb: FormBuilder) {
     this.rsvpForm = this.fb.group({
@@ -354,7 +321,6 @@ export class RsvpComponent {
   onSubmit() {
     if (this.rsvpForm.valid) {
       this.isSubmitting = true;
-      this.storedName = this.rsvpForm.value.name;
 
       const formData = new FormData();
       formData.append('name', this.rsvpForm.value.name);
@@ -374,7 +340,6 @@ export class RsvpComponent {
         .then(() => {
           this.isSubmitting = false;
           this.submitted = true;
-          this.showModal = true;
           this.rsvpForm.reset({
             name: '',
             attending: 'yes',
@@ -395,9 +360,5 @@ export class RsvpComponent {
         control?.markAsTouched();
       });
     }
-  }
-
-  closeModal() {
-    this.showModal = false;
   }
 }

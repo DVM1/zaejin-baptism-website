@@ -68,7 +68,7 @@ register();
         <app-location></app-location>
         <app-gallery></app-gallery>
         <app-dress-code></app-dress-code>
-        <app-rsvp></app-rsvp>
+        <app-rsvp id="rsvp"></app-rsvp>
       </main>
 
       <footer>
@@ -76,114 +76,7 @@ register();
       </footer>
     </div>
   `,
-  styles: [`
-    :host {
-      --color-primary: #ff9a9e;
-      --color-accent: #fad0c4;
-      --color-bg: #fff0f3; /* Soft Pink Background */
-      --color-text: #555;
-      --font-heading: 'Great Vibes', cursive;
-      --font-body: 'Cormorant Garamond', serif;
-      
-      display: block;
-      min-height: 100vh;
-      color: var(--color-text);
-      font-family: var(--font-body);
-      background: linear-gradient(135deg, #fff0f3 0%, #e0f7fa 100%); /* Pink to Light Blue gradient */
-      overflow-x: hidden;
-    }
-
-    .hidden {
-      height: 100vh;
-      overflow: hidden;
-      filter: blur(10px);
-    }
-
-    /* Fixed Balloons & Sparkles */
-    .balloons-container, .sparkles-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .balloon {
-      position: absolute;
-      bottom: -100px; /* Start below screen */
-      width: 40px;
-      height: 55px; /* Slightly taller for oval shape */
-      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; /* Balloon shape */
-      opacity: 0.6;
-      animation: floatUp linear infinite; /* Removed rotation */
-    }
-    
-    .balloon::before {
-       /* String */
-       content: '';
-       position: absolute;
-       bottom: -15px;
-       left: 50%;
-       width: 1px;
-       height: 25px;
-       background: rgba(0,0,0,0.1);
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.7;
-      }
-      50% {
-        transform: translateY(-50vh) translateX(15px); /* Gentle sway right */
-      }
-      100% {
-        transform: translateY(-120vh) translateX(-15px); /* Sway left and exit top */
-        opacity: 0;
-      }
-    }
-
-    /* ... Sparkles/Confetti ... */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.6);
-      /* Use fall animation */
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-       0% { 
-         transform: translateY(-5vh) translateX(0) rotate(0deg); 
-         opacity: 0; 
-       }
-       10% { opacity: 1; }
-       100% { 
-         transform: translateY(105vh) translateX(20px) rotate(360deg); 
-         opacity: 0; 
-       }
-    }
-
-    /* ... Footer ... */
-    footer {
-      text-align: center;
-      padding: 3rem;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      position: relative;
-      z-index: 1;
-    }
-  `]
+  styles: []
 })
 export class App {
   content = CONTENT;

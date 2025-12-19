@@ -17,21 +17,21 @@ export const CONTENT = {
     timeline: [
         {
             time: '11:30 AM',
-            title: 'The Ceremony',
+            title: 'The Divine Liturgy',
             venue: "St. Mary's Cathedral",
             address: '123 Faith Street, Heavensville',
             note: 'Please arrive 15 minutes early.'
         },
         {
             time: '12:00 PM',
-            title: 'The Reception',
+            title: 'The Feast',
             venue: 'The Golden Garden Hotel',
             address: '456 Celebration Ave, Party City',
             note: 'Lunch will be served.'
         },
         {
             time: '02:00 PM',
-            title: 'Games & Gifts',
+            title: 'Joyful Moments',
             venue: 'Ballroom A',
             note: 'Fun activities for kids and adults.'
         },
@@ -59,31 +59,28 @@ export const CONTENT = {
         }
     ],
     dressCode: {
-        title: 'Dress Code',
+        title: 'Attire Guide',
         subtitle: 'Semi-Formal Elegance',
-        description: 'Join us in celebrating this blessed occasion in your finest attire.',
-        categories: [
-            {
-                icon: '👔',
-                title: 'For Gentlemen',
-                suggestions: ['Barong Tagalog', 'Suit & Tie', 'Dress Shirt & Slacks']
-            },
-            {
-                icon: '👗',
-                title: 'For Ladies',
-                suggestions: ['Formal Dress', 'Filipiniana', 'Elegant Pants Suit']
-            },
-            {
-                icon: '👶',
-                title: 'For Kids',
-                suggestions: ['Sunday Best', 'Smart Casual', 'Cute & Comfy']
-            }
+        description: 'We kindly ask our guests to follow our color palette for the photos.',
+        palette: [
+            { name: 'Dusty Rose', hex: '#DCA4A4' },
+            { name: 'Sage Green', hex: '#A8C3A8' },
+            { name: 'Champagne Gold', hex: '#E5D3B3' },
+            { name: 'Soft Lavender', hex: '#D4C1EC' },
+            { name: 'Beige', hex: '#F5F5DC' }
         ],
-        colors: {
-            preferred: ['Pastel Colors', 'Earth Tones', 'Soft Neutrals'],
-            avoid: ['All White', 'All Black']
-        },
-        note: 'The venue is air-conditioned. Comfortable shoes are recommended.'
+        dos: [
+            'Semi-Formal Attire',
+            'Sunday Best',
+            'Pastel or Neutral Tones'
+        ],
+        donts: [
+            'Shorts & Slippers',
+            'Sando / Tank Tops',
+            'Bright Neon Colors',
+            'All Black'
+        ],
+        note: 'Please help us maintain the solemnity and elegance of the event.'
     },
     gallery: [
         'assets/images/gallery/20.jpg',

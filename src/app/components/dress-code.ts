@@ -8,54 +8,52 @@ import { CONTENT } from '../website-content';
   imports: [CommonModule],
   template: `
     <section class="dress-code-section container">
-      <div class="content-wrapper">
-        <h2 class="section-title">{{ content.dressCode.title }}</h2>
-        <p class="section-subtitle">{{ content.dressCode.subtitle }}</p>
-        <p class="section-description">{{ content.dressCode.description }}</p>
+      <div class="content-wrapper glass-card">
+        <h2 class="section-title text-heading">{{ content.dressCode.title }}</h2>
+        <p class="section-subtitle text-subheading">{{ content.dressCode.subtitle }}</p>
+        <p class="section-description text-body">{{ content.dressCode.description }}</p>
 
-        <!-- Category Cards -->
-        <div class="categories-grid">
-          <div class="category-card glass-card" *ngFor="let category of content.dressCode.categories">
-            <div class="category-icon">{{ category.icon }}</div>
-            <h3 class="category-title">{{ category.title }}</h3>
-            <ul class="suggestions-list">
-              <li *ngFor="let suggestion of category.suggestions">
-                <span class="bullet">✓</span>
-                {{ suggestion }}
-              </li>
+        <!-- Color Palette Display -->
+        <div class="palette-container">
+          <h3 class="subsection-title">Color Palette</h3>
+          <div class="swatches-grid">
+            <div class="swatch-item" *ngFor="let color of content.dressCode.palette">
+              <div class="color-circle" [style.background-color]="color.hex"></div>
+              <span class="color-name">{{ color.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guidelines (Dos & Donts) -->
+        <div class="guidelines-container">
+          <!-- Dos -->
+          <div class="guide-column">
+            <div class="guide-header check">
+              <span class="icon">✓</span>
+              <h4>Please Wear</h4>
+            </div>
+            <ul class="guide-list">
+              <li *ngFor="let item of content.dressCode.dos">{{ item }}</li>
+            </ul>
+          </div>
+
+          <!-- Divider -->
+          <div class="vertical-divider"></div>
+
+          <!-- Donts -->
+          <div class="guide-column">
+            <div class="guide-header cross">
+              <span class="icon">✕</span>
+              <h4>Please Avoid</h4>
+            </div>
+            <ul class="guide-list">
+              <li *ngFor="let item of content.dressCode.donts">{{ item }}</li>
             </ul>
           </div>
         </div>
 
-        <!-- Color Palette Guide -->
-        <div class="color-guide glass-card">
-          <div class="color-section">
-            <h4>
-              <span class="icon">🎨</span>
-              Recommended Colors
-            </h4>
-            <div class="color-tags">
-              <span class="color-tag preferred" *ngFor="let color of content.dressCode.colors.preferred">
-                {{ color }}
-              </span>
-            </div>
-          </div>
-          <div class="color-section">
-            <h4>
-              <span class="icon">⚠️</span>
-              Please Avoid
-            </h4>
-            <div class="color-tags">
-              <span class="color-tag avoid" *ngFor="let color of content.dressCode.colors.avoid">
-                {{ color }}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Additional Note -->
-        <p class="note">
-          <span class="note-icon">💡</span>
+        <p class="note text-body">
+          <span class="note-icon">❦</span>
           {{ content.dressCode.note }}
         </p>
       </div>
@@ -65,20 +63,20 @@ import { CONTENT } from '../website-content';
     .dress-code-section {
       padding: var(--spacing-section) 0;
     }
-    
+
     .content-wrapper {
+      padding: 4rem 2rem;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
     .section-subtitle {
       font-size: 1.5rem;
-      font-family: var(--font-primary);
-      color: var(--color-secondary);
+      color: var(--color-primary-dark);
       margin-bottom: 0.5rem;
-      margin-top: -2rem; 
+      margin-top: -2rem;
     }
 
     .section-description {
@@ -87,123 +85,164 @@ import { CONTENT } from '../website-content';
       max-width: 600px;
     }
 
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
+    .subsection-title {
+      font-family: var(--font-subheading);
+      font-size: 1.25rem;
+      color: var(--color-text);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Color Palette Styles */
+    .palette-container {
+      margin-bottom: 4rem;
       width: 100%;
     }
 
-    .glass-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 0; /* Square corners */
-      box-shadow: var(--shadow-sm);
-    }
-
-    .category-card {
-      padding: 2rem;
-      transition: transform 0.3s;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .category-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .category-title {
-        color: var(--color-text);
-        margin-bottom: 1.5rem;
-        font-size: 1.25rem;
-      }
-
-      .suggestions-list {
-        text-align: left;
-        padding-left: 1rem;
-        
-        li {
-          margin-bottom: 0.5rem;
-          color: var(--color-text-light);
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-
-          .bullet {
-            color: var(--color-primary);
-            font-weight: bold;
-          }
-        }
-      }
-    }
-
-    .color-guide {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 2rem;
-      justify-content: space-around;
-      margin-bottom: 3rem;
-      width: 100%;
-    }
-
-    .color-section {
-      h4 {
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-size: 1.1rem;
-      }
-    }
-
-    .color-tags {
+    .swatches-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 2rem;
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 0.8rem;
     }
 
-    .color-tag {
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      
-      &.preferred {
-        background: var(--color-bg);
-        color: var(--color-text);
-        border: 1px solid var(--color-primary);
-      }
+    .color-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: var(--shadow-sm);
+      border: 3px solid white;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-      &.avoid {
-        background: #f5f5f5;
-        color: var(--color-text-light);
-        text-decoration: line-through;
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-md);
+      }
+    }
+
+    .color-name {
+      font-family: var(--font-secondary);
+      font-size: 0.9rem;
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* Guidelines Styles */
+    .guidelines-container {
+      display: flex;
+      gap: 3rem;
+      width: 100%;
+      max-width: 800px;
+      justify-content: center;
+      margin-bottom: 2rem;
+      background: rgba(255,255,255,0.5);
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .vertical-divider {
+      width: 1px;
+      background: rgba(0,0,0,0.1);
+      align-self: stretch;
+    }
+
+    .guide-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .guide-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+
+      h4 {
+        font-family: var(--font-subheading);
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+
+    /* Green Check Header */
+    .guide-header.check {
+      .icon { background: #A8C3A8; }
+      h4 { color: #5D7A5D; }
+    }
+
+    /* Red Cross Header */
+    .guide-header.cross {
+      .icon { background: #E57373; }
+      h4 { color: #D32F2F; }
+    }
+
+    .guide-list {
+      list-style: none;
+      
+      li {
+        margin-bottom: 0.8rem;
+        font-family: var(--font-body);
+        font-size: 1.1rem;
+        color: var(--color-text);
       }
     }
 
     .note {
       font-style: italic;
       color: var(--color-text-light);
+      margin-top: 2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      margin-top: 2rem;
-      padding: 0 1rem; /* Added padding for mobile view */
-      text-align: center;
+      
+      .note-icon {
+        color: var(--color-gold);
+        font-size: 1.2rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .color-guide {
+      .guidelines-container {
         flex-direction: column;
+        gap: 2rem;
+      }
+
+      .vertical-divider {
+        width: 100%;
+        height: 1px;
+      }
+      
+      .swatches-grid {
+        gap: 1.5rem;
+      }
+      
+      .color-circle {
+        width: 60px;
+        height: 60px;
       }
     }
   `]

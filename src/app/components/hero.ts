@@ -46,7 +46,7 @@ import { CONTENT } from '../website-content';
           </div>
         </div>
 
-        <button class="cta-button">RSVP Now</button>
+        <button class="cta-button" (click)="scrollToRsvp()">RSVP Now</button>
       </div>
 
       <div class="scroll-indicator">
@@ -134,7 +134,7 @@ import { CONTENT } from '../website-content';
       -webkit-backdrop-filter: var(--glass-backdrop);
       border: var(--glass-border);
       box-shadow: var(--shadow-lg);
-      border-radius: 24px;
+      border-radius: 0;
       padding: 2rem 3rem;
     }
 
@@ -158,7 +158,7 @@ import { CONTENT } from '../website-content';
 
         .label {
           font-family: var(--font-secondary);
-          font-size: 0.75rem;
+          font-size: 0.9rem; /* Increased from 0.75rem */
           text-transform: uppercase;
           letter-spacing: 2px;
           color: var(--color-text-light);
@@ -184,7 +184,7 @@ import { CONTENT } from '../website-content';
       color: white;
       background: var(--gradient-gold);
       border: none;
-      border-radius: 50px;
+      border-radius: 0;
       cursor: pointer;
       box-shadow: var(--shadow-md);
       transition: all 0.3s ease;
@@ -225,7 +225,7 @@ import { CONTENT } from '../website-content';
       animation: bounce 2s infinite;
       
       span {
-        font-size: 0.8rem;
+        font-size: 0.95rem; /* Increased from 0.8rem */
         letter-spacing: 3px;
         text-transform: uppercase;
       }
@@ -340,6 +340,13 @@ export class HeroComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
+    }
+  }
+
+  scrollToRsvp() {
+    const rsvpSection = document.getElementById('rsvp');
+    if (rsvpSection) {
+      rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 

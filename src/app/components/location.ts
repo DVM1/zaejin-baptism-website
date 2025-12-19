@@ -76,7 +76,7 @@ export class SafeUrlPipe implements PipeTransform {
     .location-tabbed-section {
       padding: var(--spacing-section) 2rem;
       background-color: var(--color-bg); 
-      border-radius: 30px; 
+      border-radius: 0; 
       margin: 2rem auto 4rem;
       max-width: 1200px;
       border: 1px solid rgba(255, 255, 255, 0.5);
@@ -170,7 +170,6 @@ export class SafeUrlPipe implements PipeTransform {
     .cards-container {
       position: relative;
       width: 100%;
-      max-width: 600px;
       margin: 0 auto;
     }
 
@@ -198,7 +197,7 @@ export class SafeUrlPipe implements PipeTransform {
         width: 56px;
         height: 56px;
         background: var(--color-bg);
-        border-radius: 16px;
+        border-radius: 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -221,7 +220,7 @@ export class SafeUrlPipe implements PipeTransform {
         }
 
         .venue-type {
-          font-size: 0.85rem;
+          font-size: 1rem; /* Increased from 0.85rem */
           color: var(--color-text-light);
           font-weight: 600;
           text-transform: uppercase;
@@ -232,14 +231,13 @@ export class SafeUrlPipe implements PipeTransform {
 
     .venue-image {
       width: 100%;
-      height: 250px;
       padding: 0 1.5rem;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 16px;
+        border-radius: 0;
         box-shadow: var(--shadow-sm);
       }
     }
@@ -247,7 +245,7 @@ export class SafeUrlPipe implements PipeTransform {
     .map-preview {
       margin: 1.5rem; /* added margin top for spacing since address is gone */
       aspect-ratio: 16 / 9;
-      border-radius: 16px;
+      border-radius: 0;
       overflow: hidden;
       background: #f0f0f0;
       border: 1px solid rgba(0, 0, 0, 0.05);
@@ -268,7 +266,7 @@ export class SafeUrlPipe implements PipeTransform {
         background: var(--color-primary);
         color: white;
         text-decoration: none;
-        border-radius: 50px;
+        border-radius: 0;
         font-weight: 600;
         font-size: 1rem;
         transition: all 0.3s ease;
