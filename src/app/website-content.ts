@@ -1,7 +1,7 @@
 export const CONTENT = {
     baby: {
         name: 'Zaejin Astraea',
-        photoUrl: '/assets/images/gallery/20.jpg'
+        photoUrl: 'assets/images/gallery/20.jpg'
     },
     event: {
         date: '2026-01-10T11:30:00', // ISO format for Countdown
@@ -86,11 +86,11 @@ export const CONTENT = {
         note: 'The venue is air-conditioned. Comfortable shoes are recommended.'
     },
     gallery: [
-        '/assets/images/gallery/20.jpg',
-        '/assets/images/gallery/20.jpg',
-        '/assets/images/gallery/20.jpg',
-        '/assets/images/gallery/20.jpg',
-        '/assets/images/gallery/20.jpg',
-        '/assets/images/gallery/20.jpg'
+        'assets/images/gallery/20.jpg',
+        'assets/images/gallery/20.jpg',
+        'assets/images/gallery/20.jpg',
+        'assets/images/gallery/20.jpg',
+        'assets/images/gallery/20.jpg',
+        'assets/images/gallery/20.jpg'
     ],
 };
