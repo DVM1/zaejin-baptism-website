@@ -56,7 +56,8 @@ register();
          <div class="sparkle" *ngFor="let s of sparkles"
               [style.left.%]="s.left"
               [style.top.%]="s.top"
-              [style.animation-delay]="s.delay + 's'">
+              [style.animation-delay]="s.delay + 's'"
+              [style.animation-duration]="s.duration + 's'">
          </div>
       </div>
 
@@ -148,20 +149,29 @@ register();
       }
     }
 
-    /* ... Sparkles ... */
+    /* ... Sparkles/Confetti ... */
     .sparkle {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       background: white;
       border-radius: 50%;
-      box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8);
-      animation: twinkle 3s infinite;
+      opacity: 0.8;
+      box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.6);
+      /* Use fall animation */
+      animation: fall linear infinite;
     }
 
-    @keyframes twinkle {
-       0%, 100% { opacity: 0; transform: scale(0.5); }
-       50% { opacity: 1; transform: scale(1.2); }
+    @keyframes fall {
+       0% { 
+         transform: translateY(-5vh) translateX(0) rotate(0deg); 
+         opacity: 0; 
+       }
+       10% { opacity: 1; }
+       100% { 
+         transform: translateY(105vh) translateX(20px) rotate(360deg); 
+         opacity: 0; 
+       }
     }
 
     /* ... Footer ... */
@@ -186,10 +196,11 @@ export class App {
     color: this.getRandomColor()
   }));
 
-  sparkles = Array.from({ length: 30 }).map(() => ({
+  sparkles = Array.from({ length: 40 }).map(() => ({
     left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 3
+    top: Math.random() * -20, // Start slightly above
+    delay: Math.random() * 5,
+    duration: 3 + Math.random() * 5 // Random fall speed 3-8s
   }));
 
   handleEnter() {
