@@ -29,7 +29,7 @@ import { CONTENT } from '../website-content';
   `,
   styles: [`
     .intro-section {
-      padding: 0 0 var(--spacing-section); /* Removed top padding */
+      padding: var(--spacing-section) 0;
       display: flex;
       justify-content: center;
       /* Background handled by global app container now (balloons/sparkles) */

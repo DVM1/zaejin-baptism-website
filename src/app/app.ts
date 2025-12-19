@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { HeroComponent } from './components/hero';
 import { IntroComponent } from './components/intro';
 import { EventDetailsComponent } from './components/event-details';
 import { LocationComponent } from './components/location';
@@ -21,6 +22,7 @@ register();
   imports: [
     CommonModule,
     RouterOutlet,
+    HeroComponent,
     IntroComponent,
     EventDetailsComponent,
     LocationComponent,
@@ -59,6 +61,7 @@ register();
       </div>
 
       <main>
+        <app-hero></app-hero>
         <app-intro></app-intro>
         <app-event-details></app-event-details>
         <app-location></app-location>
