@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Rose Gold Gradient -->
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0b6b6;stop-opacity:1" /> <!-- Light Lighter -->
+      <stop offset="50%" style="stop-color:#d48c8c;stop-opacity:1" /> <!-- Mid Rose -->
+      <stop offset="100%" style="stop-color:#a85a5a;stop-opacity:1" /> <!-- Darker Shadow -->
+    </linearGradient>
+    
+    <!-- Inner Shadow for distinct edge -->
+    <filter id="inset" x="-50%" y="-50%" width="200%" height="200%">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0" />
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="3" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feFlood flood-color="#8a3b3b" result="color" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feComposite in2="SourceAlpha" operator="in" />
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Irregular Wax Shape -->
+  <path d="M50 5 
+           C 70 5, 80 15, 90 25 
+           S 98 50, 95 65 
+           S 75 95, 50 95 
+           S 5 85, 5 50 
+           S 20 15, 35 10 
+           Q 42 5, 50 5 Z" 
+        fill="url(#roseGold)" stroke="#eebbba" stroke-width="2" />
+
+  <!-- Inner Rim -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#e09494" stroke-width="2" opacity="0.7" />
+
+  <!-- The "Z" (Approximated Serif Z Path since external fonts won't load in favicons) -->
+  <path d="M 35 35 L 65 35 L 35 65 L 65 65" 
+        fill="none" 
+        stroke="white" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="drop-shadow(1px 1px 1px rgba(0,0,0,0.3))" />
+</svg>
