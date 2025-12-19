@@ -13,8 +13,10 @@ import { CommonModule } from '@angular/common';
         <div class="glow-orb bottom-right"></div>
         
         <div class="content">
-          <div class="welcome-label">You are invited to the Christening of</div>
-          <h1 class="baby-name">{{ name }}</h1>
+          <p class="invitation-message">We are blessed to celebrate a double milestone for our little one.</p>
+          <p class="invitation-message">Join us as we welcome her into the Christian world through baptism and give thanks for her first year of life.</p>
+          <p class="invitation-message">Your presence means so much to us as we celebrate this special moment with Zaejin.</p>
+          <p class="invitation-message highlight">We truly look forward to seeing you there!</p>
           
           <div class="divider">
             <span class="line"></span>
@@ -106,17 +108,6 @@ import { CommonModule } from '@angular/common';
       text-align: center;
     }
 
-    .welcome-label {
-      font-family: var(--font-body);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 1.1rem; /* Increased from 0.9rem */
-      color: var(--color-text-light);
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.2s forwards;
-    }
-
     .baby-name {
       font-family: var(--font-heading);
       font-size: 6.5rem; /* Increased from 5.5rem */
@@ -124,10 +115,28 @@ import { CommonModule } from '@angular/common';
       background: linear-gradient(135deg, var(--color-text) 30%, var(--color-primary-dark) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      filter: drop-shadow(0 2px 4px rgba(255, 154, 158, 0.1));
+    }
+
+    .invitation-message {
+      font-family: var(--font-body);
+      font-size: 1.4rem; /* Increased from 1.1rem for invitation letter feel */
+      line-height: 1.9;
+      color: var(--color-text);
+      margin-bottom: 1.2rem;
+      max-width: 550px;
       opacity: 0;
       animation: fadeInUp 0.8s ease-out 0.4s forwards;
-      filter: drop-shadow(0 2px 4px rgba(255, 154, 158, 0.1));
+
+      &.highlight {
+        font-weight: 600;
+        color: var(--color-primary-dark);
+        font-size: 1.5rem; /* Even larger for emphasis */
+        margin-bottom: 2.5rem;
+      }
     }
 
     .divider {
@@ -144,8 +153,8 @@ import { CommonModule } from '@angular/common';
         height: 1px;
         flex: 1;
         max-width: 60px;
-        background: var(--color-gold);
-        opacity: 0.3;
+        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        opacity: 0.8; /* Increased from 0.3 for the gradient version */
       }
 
       .ornament {

@@ -18,7 +18,7 @@ export class SafeUrlPipe implements PipeTransform {
   template: `
     <section class="location-tabbed-section container">
       <div class="content-wrapper">
-        <h2 class="section-title">Getting There</h2>
+        <h2 class="section-title">Location Guide</h2>
 
         <!-- Tab Switcher -->
         <div class="tabs-container">
@@ -153,7 +153,7 @@ export class SafeUrlPipe implements PipeTransform {
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: var(--font-primary);
-      font-size: 1rem;
+      font-size: 1.3rem; /* Increased from 1rem */
 
       &.active {
         background: var(--color-primary);
@@ -196,19 +196,19 @@ export class SafeUrlPipe implements PipeTransform {
       .icon-circle {
         width: 56px;
         height: 56px;
-        background: var(--color-bg);
+        background: transparent; /* Transparent to blend with parent */
         border-radius: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.8rem;
-        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        box-shadow: none; /* Remove shadow since background is transparent */
         color: var(--color-primary);
       }
 
       .header-text {
         h3 {
-          font-size: 1.25rem;
+          font-size: 1.5rem; /* Increased from 1.25rem */
           margin: 0;
           color: var(--color-text);
           font-family: var(--font-secondary);
@@ -268,12 +268,12 @@ export class SafeUrlPipe implements PipeTransform {
         text-decoration: none;
         border-radius: 0;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 1.2rem; /* Increased from 1rem */
         transition: all 0.3s ease;
         box-shadow: var(--shadow-sm);
 
         &:hover {
-          background: var(--color-highlight);
+          background: var(--color-primary-dark);
           transform: translateY(-2px);
           box-shadow: var(--shadow-md);
         }

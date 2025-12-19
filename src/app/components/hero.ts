@@ -19,8 +19,9 @@ import { CONTENT } from '../website-content';
 
       <div class="content container">
         <div class="title-group">
-          <h2 class="sub-title">The Christening of</h2>
+          <h2 class="sub-title">YOU ARE INVITED!</h2>
           <h1 class="main-title">{{ content.baby.name }}</h1>
+          <p class="turns-one">TURNS ONE</p>
           <p class="date">{{ content.event.dateDisplay }}</p>
         </div>
 
@@ -99,7 +100,7 @@ import { CONTENT } from '../website-content';
 
     .sub-title {
       font-family: var(--font-secondary);
-      font-size: 1.2rem;
+      font-size: 1.8rem; /* Increased from 1.2rem */
       text-transform: uppercase;
       letter-spacing: 6px;
       color: var(--color-text-light);
@@ -109,7 +110,7 @@ import { CONTENT } from '../website-content';
 
     .main-title {
       font-family: var(--font-primary);
-      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-size: clamp(5rem, 10vw, 9rem); /* Increased from clamp(3.5rem, 8vw, 7rem) */
       line-height: 1.1;
       margin-bottom: 1rem;
       background: var(--gradient-coral);
@@ -120,9 +121,19 @@ import { CONTENT } from '../website-content';
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     }
 
+    .turns-one {
+      font-family: var(--font-secondary);
+      font-size: 2.5rem; /* Increased from 1.8rem */
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      color: var(--color-gold);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
     .date {
       font-family: var(--font-secondary);
-      font-size: 1.5rem;
+      font-size: 1.8rem; /* Increased from 1.5rem */
       font-weight: 600;
       color: var(--color-text);
       letter-spacing: 1px;

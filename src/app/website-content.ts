@@ -17,24 +17,46 @@ export const CONTENT = {
     timeline: [
         {
             time: '11:30 AM',
-            title: 'The Divine Liturgy',
-            venue: "St. Mary's Cathedral",
-            address: '123 Faith Street, Heavensville',
+            title: 'Christening Ceremony',
+            venue: "Our Lady of the Annunciation Parish and Shrine of the Incarnation",
+            address: 'St. Dominic III Subd. 1116, Mindanao Ave Ext, Quezon City, 1116 Metro Manila',
             note: 'Please arrive 15 minutes early.'
         },
         {
             time: '12:00 PM',
-            title: 'The Feast',
-            venue: 'The Golden Garden Hotel',
-            address: '456 Celebration Ave, Party City',
-            note: 'Lunch will be served.'
+            title: 'Reception',
+            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
+            note: 'Guests may start arriving at the reception venue.'
         },
         {
-            time: '02:00 PM',
-            title: 'Joyful Moments',
-            venue: 'Ballroom A',
+            time: '12:30 PM',
+            title: 'Program Begins',
+            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Fun activities for kids and adults.'
         },
+        {
+            time: '01:30 PM',
+            title: 'Lunch',
+            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
+            note: 'Buffet opens. Time to eat!'
+        },
+        {
+            time: '02:30 PM',
+            title: 'Giveaways & Tokens',
+            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
+            note: 'Gifts for godparents and all our guests.'
+        },
+        {
+            time: '03:30 PM',
+            title: 'End of Celebration',
+            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
+            note: 'Venue closes. Safe travels to all our guests.'
+        }
     ],
     venues: [
         {
@@ -60,8 +82,8 @@ export const CONTENT = {
     ],
     dressCode: {
         title: 'Attire Guide',
-        subtitle: 'Semi-Formal Elegance',
-        description: 'We kindly ask our guests to follow our color palette for the photos.',
+        subtitle: '',
+        description: "We're keeping this party simple and laid back, so just come in your casual attire and feel free to add some of the colors from our palette.",
         palette: [
             { name: 'Dusty Rose', hex: '#DCA4A4' },
             { name: 'Sage Green', hex: '#A8C3A8' },
@@ -78,7 +100,7 @@ export const CONTENT = {
             'Shorts & Slippers',
             'Sando / Tank Tops',
             'Bright Neon Colors',
-            'All Black'
+            'All Black / Dark Colors'
         ],
         note: 'Please help us maintain the solemnity and elegance of the event.'
     },

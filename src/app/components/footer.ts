@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { CONTENT } from '../website-content';
 
 @Component({
-    selector: 'app-footer',
-    standalone: true,
-    imports: [CommonModule],
-    template: `
+  selector: 'app-footer',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
     <footer class="footer">
        <div class="waves">
           <svg class="wave" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -42,7 +42,7 @@ import { CONTENT } from '../website-content';
         </div>
     </footer>
   `,
-    styles: [`
+  styles: [`
     .footer {
       position: relative;
       background: #5E3A5A; /* Deep Purple/Brown for contrast */
@@ -112,7 +112,7 @@ import { CONTENT } from '../website-content';
     .tagline {
       font-family: var(--font-primary);
       font-style: italic;
-      font-size: 1.1rem;
+      font-size: 1.3rem; /* Increased from 1.1rem */
       max-width: 600px;
       color: rgba(255,255,255,0.7);
     }
@@ -122,14 +122,14 @@ import { CONTENT } from '../website-content';
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 0.9rem;
+      font-size: 1.15rem; /* Increased from 0.9rem */
       color: var(--color-gold);
     }
 
     .copyright {
       margin-top: 3rem;
-      font-size: 0.75rem;
-      opacity: 0.4;
+      font-size: 1rem; /* Increased from 0.75rem */
+      opacity: 0.6; /* Increased opacity for readability */
       font-family: var(--font-secondary);
     }
 
@@ -141,6 +141,6 @@ import { CONTENT } from '../website-content';
   `]
 })
 export class FooterComponent {
-    content = CONTENT;
-    currentYear = new Date().getFullYear();
+  content = CONTENT;
+  currentYear = new Date().getFullYear();
 }

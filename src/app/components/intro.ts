@@ -93,7 +93,7 @@ import { CONTENT } from '../website-content';
       }
 
       .verse {
-        font-size: 1.15rem;
+        font-size: 1.3rem; /* Increased from 1.15rem */
         color: var(--color-text-light);
         margin-bottom: 2rem;
         font-style: italic;
@@ -104,18 +104,18 @@ import { CONTENT } from '../website-content';
         span {
           display: block;
           margin-top: 0.5rem;
-          font-size: 0.9rem;
+          font-size: 1.15rem; /* Increased from 0.9rem */
           font-weight: 600;
           color: var(--color-secondary);
           text-transform: uppercase;
-          letter-spacing: 1px;
+          letter-spacing: 1.5px;
           font-style: normal;
           font-family: var(--font-secondary);
         }
       }
 
       .body-text {
-        font-size: 1.05rem;
+        font-size: 1.25rem; /* Increased from 1.05rem */
         line-height: 1.8;
         color: var(--color-text);
       }

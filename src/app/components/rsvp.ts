@@ -11,8 +11,11 @@ import { CONTENT } from '../website-content';
     <section class="rsvp-section container">
       <div class="rsvp-card glass-card">
         <div class="rsvp-content-wrapper">
-          <h2 class="section-title">RSVP</h2>
-          <p class="subtitle">Kindly respond by {{ content.event.rsvpDeadline }}</p>
+          <!-- Title and Subtitle - Only show when form is active -->
+          <div *ngIf="!submitted">
+            <h2 class="section-title">RSVP</h2>
+            <p class="subtitle">Kindly respond by {{ content.event.rsvpDeadline }}</p>
+          </div>
 
           <!-- Success Message -->
           <div *ngIf="submitted" class="success-message">
@@ -114,6 +117,8 @@ import { CONTENT } from '../website-content';
       color: var(--color-text-light);
       margin-bottom: 3rem;
       font-style: italic;
+      font-size: 1.4rem; /* Increased from unspecified */
+      line-height: 1.8;
     }
 
     .form-group {
@@ -124,22 +129,23 @@ import { CONTENT } from '../website-content';
         margin-bottom: 0.8rem;
         font-weight: 600;
         color: var(--color-text);
-        font-size: 0.95rem;
+        font-size: 1.2rem; /* Increased from 0.95rem */
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
         
         .required { color: var(--color-highlight); margin-left: 4px; }
       }
 
       input[type="text"],
       input[type="number"],
+      select,
       textarea {
         width: 100%;
-        padding: 1rem;
+        padding: 1.2rem;
         border: 2px solid #eee;
-        border-radius: 0; /* Square corners */
+        border-radius: 0;
         font-family: inherit;
-        font-size: 1rem;
+        font-size: 1.2rem; /* Increased from 1rem */
         transition: all 0.3s;
         background: rgba(255,255,255,0.5);
 
@@ -158,7 +164,7 @@ import { CONTENT } from '../website-content';
       
       .error-msg {
         color: var(--color-highlight);
-        font-size: 0.85rem;
+        font-size: 1rem; /* Increased from 0.85rem */
         margin-top: 0.5rem;
       }
     }
@@ -192,8 +198,9 @@ import { CONTENT } from '../website-content';
 
         .emoji { font-size: 2rem; }
         span:last-child { 
-           font-weight: 500; 
-           text-align: center; /* Handle text wrap nicely */
+           font-weight: 600; 
+           font-size: 1.2rem; /* Added size */
+           text-align: center; 
         }
       }
 
@@ -207,13 +214,13 @@ import { CONTENT } from '../website-content';
 
     .btn-primary {
       width: 100%;
-      padding: 1.2rem;
-      font-size: 1.1rem;
+      padding: 1.5rem;
+      font-size: 1.4rem; /* Increased from 1.1rem/1.25rem */
       background: var(--gradient-coral);
       color: white;
       border: none;
-      border-radius: 0; /* Square corners */
-      font-weight: 600;
+      border-radius: 0;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: var(--shadow-sm);

@@ -80,6 +80,8 @@ import { CONTENT } from '../website-content';
     }
 
     .section-description {
+      font-size: 1.4rem; /* Increased for better readability */
+      line-height: 1.8;
       color: var(--color-text-light);
       margin-bottom: 3rem;
       max-width: 600px;
@@ -87,7 +89,7 @@ import { CONTENT } from '../website-content';
 
     .subsection-title {
       font-family: var(--font-subheading);
-      font-size: 1.25rem;
+      font-size: 1.6rem; /* Increased from 1.25rem */
       color: var(--color-text);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
@@ -130,7 +132,7 @@ import { CONTENT } from '../website-content';
 
     .color-name {
       font-family: var(--font-secondary);
-      font-size: 0.9rem;
+      font-size: 1.25rem; /* Increased further from 1.1rem */
       color: var(--color-text);
       font-weight: 500;
     }
@@ -169,7 +171,7 @@ import { CONTENT } from '../website-content';
 
       h4 {
         font-family: var(--font-subheading);
-        font-size: 1.2rem;
+        font-size: 1.5rem; /* Increased from 1.2rem */
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -206,7 +208,7 @@ import { CONTENT } from '../website-content';
       li {
         margin-bottom: 0.8rem;
         font-family: var(--font-body);
-        font-size: 1.1rem;
+        font-size: 1.3rem; /* Increased from 1.1rem */
         color: var(--color-text);
       }
     }

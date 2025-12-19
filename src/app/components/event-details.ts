@@ -9,7 +9,7 @@ import { CONTENT } from '../website-content';
   template: `
     <section class="details-section container">
       <div class="content-wrapper">
-        <h2 class="section-title">The Big Day</h2>
+        <h2 class="section-title">Event Details</h2>
 
         <div class="timeline">
           <div class="event-item" *ngFor="let event of content.timeline">
@@ -81,9 +81,9 @@ import { CONTENT } from '../website-content';
         text-align: right;
         padding-right: 1.5rem;
         font-weight: 700;
-        color: var(--color-accent);
+        color: var(--color-primary-dark);
         font-family: var(--font-primary);
-        font-size: 1.2rem;
+        font-size: 1.6rem; /* Increased from 1.2rem */
         flex-shrink: 0;
         padding-top: 0.5rem;
       }
@@ -119,25 +119,26 @@ import { CONTENT } from '../website-content';
       }
       
       .content h3 {
-          font-size: 1.5rem;
+          font-size: 1.8rem; /* Increased from 1.5rem */
           margin-bottom: 0.5rem;
           color: var(--color-secondary);
       }
 
       .content .venue {
+          font-size: 1.3rem; /* Added explicit size */
           font-weight: 600;
           margin-bottom: 0.2rem;
           color: var(--color-text);
       }
 
       .content .address {
-          font-size: 0.9rem;
+          font-size: 1.2rem; /* Further increased for readability */
           color: var(--color-text-light);
           margin-bottom: 0.5rem;
       }
 
       .content .note {
-          font-size: 0.85rem;
+          font-size: 1.15rem; /* Further increased for readability */
           font-style: italic;
           color: var(--color-text-light);
       }

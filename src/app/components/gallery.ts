@@ -15,7 +15,7 @@ register();
   template: `
     <section class="gallery-section container">
       <div class="content-wrapper">
-        <h2 class="section-title">Sweet Moments</h2>
+        <h2 class="section-title">Precious Milestones</h2>
 
         <swiper-container
           navigation="true"

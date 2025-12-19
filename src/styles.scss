@@ -147,11 +147,18 @@ img {
   &::after {
     content: '🌸';
     /* Pink flower ornament */
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.8rem;
     color: var(--color-primary);
-    /* Use pink/coral instead of gold for the flower */
-    margin-top: 0.5rem;
+    margin: 1rem auto 0;
+    width: 100%;
+
+    /* Decorative side lines matching the welcome overlay style */
+    background:
+      linear-gradient(90deg, transparent, var(--color-gold), transparent) no-repeat left 50% / calc(50% - 2.5rem) 1px,
+      linear-gradient(90deg, transparent, var(--color-gold), transparent) no-repeat right 50% / calc(50% - 2.5rem) 1px;
     opacity: 1;
   }
 }
@@ -266,9 +273,11 @@ img {
     position: absolute;
     bottom: -15px;
     left: 50%;
-    width: 1px;
+    width: 2px;
+    /* Increased from 1px for better visibility */
     height: 25px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    /* Darkened from 0.1 to 0.4 for better contrast */
   }
 }
 
