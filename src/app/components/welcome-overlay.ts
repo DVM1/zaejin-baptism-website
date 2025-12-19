@@ -124,7 +124,6 @@ import { CommonModule } from '@angular/common';
     .invitation-message {
       font-family: var(--font-body);
       font-size: 1.4rem; /* Increased from 1.1rem for invitation letter feel */
-      line-height: 1.9;
       color: var(--color-text);
       margin-bottom: 1.2rem;
       max-width: 550px;
@@ -179,7 +178,7 @@ import { CommonModule } from '@angular/common';
 
       /* Button specific font settings */
       font-family: var(--font-subheading);
-      font-size: 1.1rem;
+      font-size: 1rem;
       letter-spacing: 1px;
       color: white;
       text-transform: uppercase;

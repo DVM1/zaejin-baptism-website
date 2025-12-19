@@ -18,43 +18,31 @@ export const CONTENT = {
         {
             time: '11:30 AM',
             title: 'Christening Ceremony',
-            venue: "Our Lady of the Annunciation Parish and Shrine of the Incarnation",
-            address: 'St. Dominic III Subd. 1116, Mindanao Ave Ext, Quezon City, 1116 Metro Manila',
             note: 'Please arrive 15 minutes early.'
         },
         {
             time: '12:00 PM',
             title: 'Reception',
-            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
-            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Guests may start arriving at the reception venue.'
         },
         {
             time: '12:30 PM',
             title: 'Program Begins',
-            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
-            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Fun activities for kids and adults.'
         },
         {
             time: '01:30 PM',
             title: 'Lunch',
-            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
-            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Buffet opens. Time to eat!'
         },
         {
             time: '02:30 PM',
             title: 'Giveaways & Tokens',
-            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
-            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Gifts for godparents and all our guests.'
         },
         {
             time: '03:30 PM',
             title: 'End of Celebration',
-            venue: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
-            address: 'Mindanao Ave Ext, Quezon City, Metro Manila',
             note: 'Venue closes. Safe travels to all our guests.'
         }
     ],

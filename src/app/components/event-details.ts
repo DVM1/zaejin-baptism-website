@@ -20,8 +20,6 @@ import { CONTENT } from '../website-content';
             </div>
             <div class="content glass-card">
               <h3>{{ event.title }}</h3>
-              <p class="venue" *ngIf="event.venue">{{ event.venue }}</p>
-              <p class="address" *ngIf="event.address">{{ event.address }}</p>
               <p class="note" *ngIf="event.note">{{ event.note }}</p>
             </div>
           </div>
