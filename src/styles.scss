@@ -1,1 +1,465 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  /* Colors - Coral Princess Theme */
+  --color-primary: #FF7F7F;
+  /* Deeper Coral */
+  --color-secondary: #BE93D4;
+  /* Richer Purple */
+  --color-accent: #FFB7B2;
+  /* Soft Coral */
+  --color-highlight: #FF4081;
+  /* Vivd Pink */
+
+  --color-bg: #FFF0F3;
+  /* Warm Pinkish White */
+  --color-text: #4E342E;
+  /* Dark Warm Brown for contrast */
+  --color-text-light: #795548;
+  /* Medium Brown */
+
+  --color-white: #FFFFFF;
+  --color-gold: #DEA03C;
+  /* Muted Gold */
+
+  /* Gradients */
+  --gradient-main: linear-gradient(180deg, #FFEBEF 0%, #FFF5F7 100%);
+  --gradient-coral: linear-gradient(135deg, #FF7F7F 0%, #FFB7B2 100%);
+  --gradient-purple: linear-gradient(135deg, #BE93D4 0%, #E1BEE7 100%);
+  --gradient-gold: linear-gradient(135deg, #FFD700 0%, #DEA03C 100%);
+  /* Gold Gradient */
+
+  /* Shadows - Layered System */
+  --shadow-sm: 0 4px 6px -1px rgba(255, 127, 127, 0.1), 0 2px 4px -1px rgba(255, 127, 127, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(255, 127, 127, 0.1), 0 4px 6px -2px rgba(255, 127, 127, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(255, 127, 127, 0.1), 0 10px 10px -5px rgba(255, 127, 127, 0.04);
+  --shadow-glow: 0 0 20px rgba(255, 127, 127, 0.3);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.7);
+  --glass-backdrop: blur(16px) saturate(180%);
+
+  /* Spacing */
+  --spacing-section: 6rem;
+
+  /* Fonts */
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 155, 155, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(196, 161, 217, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #FFD5E0 0%, #FFF0F5 35%, #F8E8F5 65%, #EDD8F0 100%);
+  background-attachment: fixed;
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+
+  // Decorative background balloons (increased opacity)
+  &::before {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.25; // Increased from 0.15
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+  }
+
+  // Large coral balloon (top right)
+  &::before {
+    width: 400px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, #FF9B9B, #FFB4A9 50%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation: float1 20s ease-in-out infinite;
+  }
+
+
+}
+
+// Balloon floating animations
+@keyframes float1 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-40px) translateX(-15px);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-accent);
+    margin: 1rem auto 0;
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--gradient-coral);
+  color: white;
+  border-radius: 50px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: var(--gradient-accent);
+  }
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Floating Balloons Background */
+.floating-balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+
+  .balloon {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    opacity: 0.8; // Increased from 0.6
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+    animation: floatUp 15s ease-in infinite;
+
+    &:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    &:nth-child(2) {
+      left: 30%;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    &:nth-child(3) {
+      left: 50%;
+      animation-delay: 6s;
+      animation-duration: 16s;
+    }
+
+    &:nth-child(4) {
+      left: 70%;
+      animation-delay: 2s;
+      animation-duration: 22s;
+    }
+
+    &:nth-child(5) {
+      left: 85%;
+      animation-delay: 5s;
+      animation-duration: 19s;
+    }
+
+    &:nth-child(6) {
+      left: 25%;
+      animation-delay: 4s;
+      animation-duration: 21s;
+    }
+
+    &:nth-child(7) {
+      left: 45%;
+      animation-delay: 7s;
+      animation-duration: 17s;
+    }
+
+    &:nth-child(8) {
+      left: 60%;
+      animation-delay: 1s;
+      animation-duration: 23s;
+    }
+
+    &:nth-child(9) {
+      left: 18%;
+      animation-delay: 8s;
+      animation-duration: 15s;
+    }
+
+    &:nth-child(10) {
+      left: 75%;
+      animation-delay: 9s;
+      animation-duration: 24s;
+    }
+  }
+}
+
+/* Confetti particles */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: fall 10s linear infinite;
+
+  &:nth-child(odd) {
+    background: var(--color-primary);
+  }
+
+  &:nth-child(3n) {
+    background: var(--color-secondary);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Sparkles/Confetti Container */
+.sparkles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite, fallSlow 20s linear infinite;
+
+    &:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      background: #FFB4A9;
+      top: -10%;
+    }
+
+    &:nth-child(2) {
+      left: 20%;
+      animation-delay: 1s;
+      background: #C4A1D9;
+      top: -20%;
+    }
+
+    &:nth-child(3) {
+      left: 30%;
+      animation-delay: 2s;
+      background: #D4AF37;
+      top: -15%;
+    }
+
+    &:nth-child(4) {
+      left: 40%;
+      animation-delay: 0.5s;
+      background: #FFB4A9;
+      top: -25%;
+    }
+
+    &:nth-child(5) {
+      left: 50%;
+      animation-delay: 1.5s;
+      background: #C4A1D9;
+      top: -10%;
+    }
+
+    &:nth-child(6) {
+      left: 60%;
+      animation-delay: 2.5s;
+      background: #FFB4A9;
+      top: -30%;
+    }
+
+    &:nth-child(7) {
+      left: 70%;
+      animation-delay: 0.8s;
+      background: #D4AF37;
+      top: -18%;
+    }
+
+    &:nth-child(8) {
+      left: 80%;
+      animation-delay: 1.8s;
+      background: #C4A1D9;
+      top: -22%;
+    }
+
+    &:nth-child(9) {
+      left: 90%;
+      animation-delay: 2.2s;
+      background: #FFB4A9;
+      top: -12%;
+    }
+
+    &:nth-child(10) {
+      left: 15%;
+      animation-delay: 3s;
+      background: #D4AF37;
+      top: -28%;
+    }
+
+    &:nth-child(11) {
+      left: 65%;
+      animation-delay: 3.5s;
+      background: #C4A1D9;
+      top: -16%;
+    }
+
+    &:nth-child(12) {
+      left: 85%;
+      animation-delay: 4s;
+      background: #FFB4A9;
+      top: -24%;
+    }
+  }
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes fallSlow {
+  to {
+    transform: translateY(120vh);
+  }
+}
+
+// Removed sway animation for realistic garden
+// @keyframes sway {
+//   0%, 100% {
+//     transform: rotate(0deg);
+//   }
+//   50% {
+//     transform: rotate(2deg);
+//   }
+// }
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-section: 4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}

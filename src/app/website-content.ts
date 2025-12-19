@@ -1,0 +1,96 @@
+export const CONTENT = {
+    baby: {
+        name: 'Zaejin Astraea',
+        photoUrl: '/assets/images/gallery/20.jpg'
+    },
+    event: {
+        date: '2026-01-10T11:30:00', // ISO format for Countdown
+        dateDisplay: 'Saturday, January 10th, 2026',
+        rsvpDeadline: 'January 5th, 2026'
+    },
+    intro: {
+        title: 'Welcome to the Family',
+        verse: '"For this child I prayed, and the Lord has granted me my petition which I asked of Him."',
+        verseReference: '— 1 Samuel 1:27',
+        message: 'With joyful hearts, we invite you to share in the Christening of our beloved child. Your presence would mean the world to us as we guide this little one in faith and love.'
+    },
+    timeline: [
+        {
+            time: '11:30 AM',
+            title: 'The Ceremony',
+            venue: "St. Mary's Cathedral",
+            address: '123 Faith Street, Heavensville',
+            note: 'Please arrive 15 minutes early.'
+        },
+        {
+            time: '12:00 PM',
+            title: 'The Reception',
+            venue: 'The Golden Garden Hotel',
+            address: '456 Celebration Ave, Party City',
+            note: 'Lunch will be served.'
+        },
+        {
+            time: '02:00 PM',
+            title: 'Games & Gifts',
+            venue: 'Ballroom A',
+            note: 'Fun activities for kids and adults.'
+        },
+    ],
+    venues: [
+        {
+            type: 'Ceremony',
+            icon: '⛪',
+            name: "Our Lady of the Annunciation Parish and Shrine of the Incarnation",
+            plusCode: 'M2HJ+CP6',
+            locality: 'St. Dominic III Subd. 1116, Mindanao Ave Ext, Quezon City, 1116 Metro Manila',
+            image: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwdKRespC4FH-37y87nkpXLbEVO6YeTR_7EBi_MXuR7oxAW1BHyyKVsI1-IrTc_z34ti1y6wV8tEWCS1JEIFHpJTp8KrAZzfdlIr4cICBT7XCSY06815N2CvIOasiJVFZfevc_z=s1000',
+            mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.22456147453636!2d121.03188781485737!3d14.679024906275876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6d64ec15d7f%3A0x31fb7cc57300e373!2sOur%20Lady%20of%20the%20Annunciation%20Parish%20and%20Shrine%20of%20the%20Incarnation%20(Diocese%20of%20Novaliches)!5e0!3m2!1sen!2sph!4v1766149339662!5m2!1sen!2sph',
+            directionLink: 'https://maps.app.goo.gl/pfMTmxYEugmnNqcg9'
+        },
+        {
+            type: 'Reception',
+            icon: '🥂',
+            name: 'Peri-Peri Charcoal Chicken & Sauce Bar (St. Charbel) Mindanao Avenue',
+            plusCode: 'M2HJ+VQC',
+            locality: 'Mindanao Ave Ext, Quezon City, Metro Manila',
+            image: 'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyFbaJ70_KmrfgUDr8KNgI751SFrmwcybvSuz9kswaeMtMD1haos70nmENWTmelVW__CjPGv6hKfxm2PRr2m6X6yOhapeTNH816SCXwJI4-qJLLdItTBfYN__h8jEhm9tXq1aCRBw=s1000',
+            mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.22381297738377!2d121.03182900040157!3d14.679703573164579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7007813c7b3%3A0x3683dc692c858acd!2sPeri-Peri%20Charcoal%20Chicken%20%26%20Sauce%20Bar%20(St.%20Charbel)%20Mindanao%20Avenue!5e0!3m2!1sen!2sph!4v1766149393834!5m2!1sen!2sph',
+            directionLink: 'https://maps.app.goo.gl/sysqvkriM9ZD77AS8'
+        }
+    ],
+    dressCode: {
+        title: 'Dress Code',
+        subtitle: 'Semi-Formal Elegance',
+        description: 'Join us in celebrating this blessed occasion in your finest attire.',
+        categories: [
+            {
+                icon: '👔',
+                title: 'For Gentlemen',
+                suggestions: ['Barong Tagalog', 'Suit & Tie', 'Dress Shirt & Slacks']
+            },
+            {
+                icon: '👗',
+                title: 'For Ladies',
+                suggestions: ['Formal Dress', 'Filipiniana', 'Elegant Pants Suit']
+            },
+            {
+                icon: '👶',
+                title: 'For Kids',
+                suggestions: ['Sunday Best', 'Smart Casual', 'Cute & Comfy']
+            }
+        ],
+        colors: {
+            preferred: ['Pastel Colors', 'Earth Tones', 'Soft Neutrals'],
+            avoid: ['All White', 'All Black']
+        },
+        note: 'The venue is air-conditioned. Comfortable shoes are recommended.'
+    },
+    gallery: [
+        '/assets/images/gallery/20.jpg',
+        '/assets/images/gallery/20.jpg',
+        '/assets/images/gallery/20.jpg',
+        '/assets/images/gallery/20.jpg',
+        '/assets/images/gallery/20.jpg',
+        '/assets/images/gallery/20.jpg'
+    ],
+};
