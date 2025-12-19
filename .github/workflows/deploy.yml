@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 permissions:
   contents: write
@@ -26,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base-href https://github.com/DVM1/zaejin-baptism-website
+        run: npm run build -- --base-href /zaejin-baptism-website/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
