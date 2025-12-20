@@ -88,16 +88,22 @@ import { CONTENT } from '../website-content';
 
     .rsvp-card {
       width: 100%;
-      max-width: 1200px; /* Match Location Container */
-      padding: 4rem 2rem;
-      background: white; /* Fallback */
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(15px);
+      max-width: 1200px;
+      padding: 4rem;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       border-radius: 0; 
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: var(--shadow-lg);
+      border: none !important;
+      box-shadow: none !important;
       transition: all 0.5s ease;
-      /* Ensure it feels like the location container */
+      margin: 0 auto;
+
+      @media(max-width: 900px) {
+        padding: 2.5rem 1.5rem;
+        margin: 1rem 10px;
+        width: calc(100% - 20px);
+      }
     }
 
     .rsvp-content-wrapper {
@@ -117,19 +123,19 @@ import { CONTENT } from '../website-content';
       color: var(--color-text-light);
       margin-bottom: 3rem;
       font-style: italic;
-      font-size: 1.4rem; /* Increased from unspecified */
+      font-size: var(--font-size-subtitle);
       line-height: 1.8;
     }
 
     .form-group {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem; /* Reduced from 2rem */
 
       label {
         display: block;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.6rem;
         font-weight: 600;
         color: var(--color-text);
-        font-size: 1.2rem; /* Increased from 0.95rem */
+        font-size: var(--font-size-label);
         text-transform: uppercase;
         letter-spacing: 1px;
         
@@ -141,11 +147,11 @@ import { CONTENT } from '../website-content';
       select,
       textarea {
         width: 100%;
-        padding: 1.2rem;
+        padding: 1rem; /* Reduced from 1.2rem */
         border: 2px solid #eee;
         border-radius: 0;
         font-family: inherit;
-        font-size: 1.2rem; /* Increased from 1rem */
+        font-size: var(--font-size-label);
         transition: all 0.3s;
         background: rgba(255,255,255,0.5);
 
@@ -164,42 +170,42 @@ import { CONTENT } from '../website-content';
       
       .error-msg {
         color: var(--color-highlight);
-        font-size: 1rem; /* Increased from 0.85rem */
+        font-size: 1rem; 
         margin-top: 0.5rem;
       }
     }
 
     .radio-group {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
     }
 
     .radio-option {
       flex: 1;
       cursor: pointer;
-      display: flex; /* Ensure container is flex to stretch children */
+      display: flex;
 
       input {
         display: none;
       }
 
       .radio-tile {
-        flex: 1; /* Stretch to fill height of radio-option */
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center content vertically */
-        gap: 0.5rem;
-        padding: 1.5rem;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 1rem; /* Reduced from 1.5rem */
         border: 2px solid #eee;
-        border-radius: 0; /* Square corners */
+        border-radius: 0;
         transition: all 0.3s;
-        height: 100%; /* Ensure full height */
+        height: 100%;
 
-        .emoji { font-size: 2rem; }
+        .emoji { font-size: 1.5rem; } /* Reduced emoji size */
         span:last-child { 
            font-weight: 600; 
-           font-size: 1.2rem; /* Added size */
+           font-size: 1rem; 
            text-align: center; 
         }
       }
@@ -212,29 +218,6 @@ import { CONTENT } from '../website-content';
       }
     }
 
-    .btn-primary {
-      width: 100%;
-      padding: 1.5rem;
-      font-size: 1.4rem; /* Increased from 1.1rem/1.25rem */
-      background: var(--gradient-coral);
-      color: white;
-      border: none;
-      border-radius: 0;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: var(--shadow-sm);
-
-      &:hover:not(:disabled) {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      &:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
-    }
 
     /* Success Message Area */
     .success-message {
@@ -273,21 +256,6 @@ import { CONTENT } from '../website-content';
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 640px) {
-      .rsvp-card { 
-        padding: 2rem 1.5rem; 
-        border-radius: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-      
-      .rsvp-section {
-         padding-left: 0;
-         padding-right: 0;
-      }
-    }
   `]
 })
 export class RsvpComponent {

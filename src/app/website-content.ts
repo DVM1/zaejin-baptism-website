@@ -1,7 +1,7 @@
 export const CONTENT = {
     baby: {
         name: 'Zaejin Astraea',
-        photoUrl: 'assets/images/gallery/20.jpg'
+        photoUrl: 'assets/images/gallery/profile.jpg'
     },
     event: {
         date: '2026-01-10T11:30:00', // ISO format for Countdown
@@ -9,10 +9,10 @@ export const CONTENT = {
         rsvpDeadline: 'January 5th, 2026'
     },
     intro: {
-        title: 'Welcome to the Family',
-        verse: '"For this child I prayed, and the Lord has granted me my petition which I asked of Him."',
-        verseReference: '— 1 Samuel 1:27',
-        message: 'With joyful hearts, we invite you to share in the Christening of our beloved child. Your presence would mean the world to us as we guide this little one in faith and love.'
+        title: 'The Meaning of Zaejin',
+        verse: '"She is a gift from the stars, a dream we never want to wake up from."',
+        verseReference: '— A Parent\'s Promise',
+        message: 'Zaejin Astraea represents our "Bright Star" and "Justice". Her name was chosen to reflect the light she brought into our lives during a time when we needed it most. Astraea, the star-maiden, reminds us that even in the vastness of the universe, she is our guiding light.'
     },
     timeline: [
         {
@@ -92,12 +92,29 @@ export const CONTENT = {
         ],
         note: 'Please help us maintain the solemnity and elegance of the event.'
     },
+    godparents: [
+        { name: 'Ninong [Name 1]', role: 'Godfather' },
+        { name: 'Ninang [Name 1]', role: 'Godmother' },
+        { name: 'Ninong [Name 2]', role: 'Godfather' },
+        { name: 'Ninang [Name 2]', role: 'Godmother' },
+        { name: 'Ninong [Name 3]', role: 'Godfather' },
+        { name: 'Ninang [Name 3]', role: 'Godmother' }
+    ],
     gallery: [
-        'assets/images/gallery/20.jpg',
-        'assets/images/gallery/20.jpg',
-        'assets/images/gallery/20.jpg',
-        'assets/images/gallery/20.jpg',
-        'assets/images/gallery/20.jpg',
-        'assets/images/gallery/20.jpg'
+        'assets/images/gallery/1.jpg',
+        'assets/images/gallery/2.jpg',
+        'assets/images/gallery/3.jpg',
+        'assets/images/gallery/4.jpg',
+        'assets/images/gallery/5.jpg',
+        'assets/images/gallery/6.jpg',
+        'assets/images/gallery/7.jpg',
+        'assets/images/gallery/8.jpg',
+        'assets/images/gallery/9.jpg',
+        'assets/images/gallery/10.jpg',
+        'assets/images/gallery/11.jpg',
+        'assets/images/gallery/12.jpg',
+        'assets/images/gallery/13.jpg',
+        'assets/images/gallery/14.jpg',
+        'assets/images/gallery/15.jpg',
     ],
 };

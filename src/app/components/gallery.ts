@@ -14,13 +14,13 @@ register();
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <section class="gallery-section container">
-      <div class="content-wrapper">
+      <div class="content-wrapper glass-card">
         <h2 class="section-title">Precious Milestones</h2>
 
         <swiper-container
           navigation="true"
           pagination="true"
-          loop="true"
+          loop="false"
           autoplay-delay="3000"
           autoplay-disable-on-interaction="false"
           centered-slides="true"
@@ -31,11 +31,11 @@ register();
           coverflow-effect-depth="100"
           coverflow-effect-modifier="2.5"
           coverflow-effect-slide-shadows="false"
-          breakpoints='{"640": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}}'
+          breakpoints='{"640": {"slidesPerView": 2}, "1024": {"slidesPerView": 2}}'
         >
           <swiper-slide *ngFor="let photo of photos">
             <div class="photo-card glass-card">
-              <img [src]="photo" loading="lazy" alt="Baby's Photo">
+              <img [src]="photo" alt="Baby's Photo">
             </div>
           </swiper-slide>
         </swiper-container>
@@ -48,24 +48,28 @@ register();
     }
 
     .gallery-section {
-      padding: var(--spacing-section) 2rem;
-      background: var(--color-bg);
-      margin: 2rem auto 4rem;
-      max-width: 1200px;
-      border-radius: 0; /* Square corners */
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: var(--shadow-sm);
+      margin: 0 auto;
+      padding: var(--spacing-section) 0;
     }
     
     .content-wrapper {
-      /* Optional alignment if needed, but Swiper handles most */
+      padding: 4rem;
       width: 100%;
       text-align: center;
+      box-sizing: border-box;
+      border-radius: 0;
+      margin: 0 auto;
+      background: transparent !important;
+
+      @media(max-width: 900px) {
+        padding: 2.5rem 1.5rem;
+        margin: 1rem 10px;
+        width: calc(100% - 20px);
+      }
     }
 
     swiper-container {
       width: 100%;
-      padding-bottom: 50px;
     }
 
     swiper-slide {
@@ -76,10 +80,13 @@ register();
     }
 
     .photo-card {
-      /* Handled by glass-card */
-      border-radius: 0; /* Square corners */
+      border-radius: 0;
       overflow: hidden;
-      padding: 10px;
+      padding: 0;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
 
       img {
         width: 100%;
@@ -95,21 +102,11 @@ register();
       --swiper-navigation-size: 30px;
     }
 
-    @media (max-width: 768px) {
-      .gallery-section {
-        border-radius: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        width: 100% !important;
-        border: none !important;
-      }
-    }
   `]
 })
 export class GalleryComponent implements OnInit {
   photos = CONTENT.gallery;
 
   ngOnInit() {
-    register();
   }
 }

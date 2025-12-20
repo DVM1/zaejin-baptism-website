@@ -7,10 +7,10 @@ import { CONTENT } from '../website-content';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section class="hero-section" [style.transform]="'translateY(' + parallaxOffset() + 'px)'">
+    <section class="hero-section">
       <div class="background-overlay"></div>
       
-      <!-- Floating Balloons for added depth -->
+      <!-- Floating Balloons -->
       <div class="floating-elements">
          <div class="balloon balloon-1"></div>
          <div class="balloon balloon-2"></div>
@@ -20,39 +20,36 @@ import { CONTENT } from '../website-content';
       <div class="content container">
         <div class="title-group">
           <h2 class="sub-title">YOU ARE INVITED!</h2>
-          <h1 class="main-title">{{ content.baby.name }}</h1>
-          <p class="turns-one">TURNS ONE</p>
+          <div class="name-container">
+            <h1 class="main-title serif-italic">{{ content.baby.name }}</h1>
+          </div>
+          <p class="turns-one">Turns One</p>
           <p class="date">{{ content.event.dateDisplay }}</p>
         </div>
 
-        <div class="countdown-timer glass-card">
-          <div class="time-block">
-            <span class="number">{{ timeLeft().days }}</span>
-            <span class="label">Days</span>
-          </div>
-          <div class="divider">:</div>
-          <div class="time-block">
-            <span class="number">{{ timeLeft().hours }}</span>
-            <span class="label">Hours</span>
-          </div>
-          <div class="divider">:</div>
-          <div class="time-block">
-            <span class="number">{{ timeLeft().minutes }}</span>
-            <span class="label">Mins</span>
-          </div>
-          <div class="divider">:</div>
-          <div class="time-block">
-            <span class="number">{{ timeLeft().seconds }}</span>
-            <span class="label">Secs</span>
+        <div class="countdown-container">
+          <div class="countdown-timer glass-card">
+            <div class="time-block">
+              <span class="number">{{ timeLeft().days }}</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="divider"></div>
+            <div class="time-block">
+              <span class="number">{{ timeLeft().hours }}</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="divider"></div>
+            <div class="time-block">
+              <span class="number">{{ timeLeft().minutes }}</span>
+              <span class="label">Mins</span>
+            </div>
+            <div class="divider"></div>
+            <div class="time-block">
+              <span class="number">{{ timeLeft().seconds }}</span>
+              <span class="label">Secs</span>
+            </div>
           </div>
         </div>
-
-        <button class="cta-button" (click)="scrollToRsvp()">RSVP Now</button>
-      </div>
-
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <span class="arrow">↓</span>
       </div>
     </section>
   `,
@@ -65,13 +62,18 @@ import { CONTENT } from '../website-content';
     .hero-section {
       height: 100vh;
       width: 100%;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      /* Background Image Removed to match Intro/App Background */
+      padding: 0;
       will-change: transform;
+      overflow: hidden;
+      background: transparent !important;
     }
 
     .background-overlay {
@@ -90,219 +92,120 @@ import { CONTENT } from '../website-content';
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3rem;
+      justify-content: center;
+      gap: 1.5rem;
+      width: 100%;
+      height: 100%;
+      padding: 2rem 1rem;
       animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .title-group {
       text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
     }
 
     .sub-title {
       font-family: var(--font-secondary);
-      font-size: 1.8rem; /* Increased from 1.2rem */
+      font-size: 1.4rem;
       text-transform: uppercase;
-      letter-spacing: 6px;
+      letter-spacing: 0.4em;
       color: var(--color-text-light);
-      margin-bottom: 1.5rem;
       font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .name-container {
+      margin-bottom: 0.2rem;
     }
 
     .main-title {
       font-family: var(--font-primary);
-      font-size: clamp(5rem, 10vw, 9rem); /* Increased from clamp(3.5rem, 8vw, 7rem) */
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      font-size: clamp(6rem, 12vw, 8rem); 
+      line-height: 1.0;
+      font-weight: 400;
       background: var(--gradient-coral);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      /* Fallback for legibility if gradient fails or text-shadow needed */
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      letter-spacing: -0.01em;
+    }
+
+    .serif-italic {
+      font-family: var(--font-subheading);
+      font-style: italic;
+      font-weight: 400;
     }
 
     .turns-one {
       font-family: var(--font-secondary);
-      font-size: 2.5rem; /* Increased from 1.8rem */
+      font-size: 1.4rem; 
       text-transform: uppercase;
-      letter-spacing: 8px;
+      letter-spacing: 0.3em;
       color: var(--color-gold);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
     }
 
     .date {
       font-family: var(--font-secondary);
-      font-size: 1.8rem; /* Increased from 1.5rem */
-      font-weight: 600;
-      color: var(--color-text);
-      letter-spacing: 1px;
+      font-size: 1.2rem; 
+      font-weight: 500;
+      color: var(--color-text-light);
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
     }
 
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border: var(--glass-border);
-      box-shadow: var(--shadow-lg);
-      border-radius: 0;
-      padding: 2rem 3rem;
+    .countdown-container {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 1rem;
     }
 
     .countdown-timer {
+      padding: 1.5rem 1rem;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 1.5rem;
-      
-      .time-block {
-        display: flex;
-        flex-direction: column;
-        min-width: 80px;
-
-        .number {
-          font-family: var(--font-primary);
-          font-size: 3rem;
-          font-weight: 700;
-          color: var(--color-primary);
-          line-height: 1;
-        }
-
-        .label {
-          font-family: var(--font-secondary);
-          font-size: 0.9rem; /* Increased from 0.75rem */
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          color: var(--color-text-light);
-          margin-top: 0.5rem;
-          font-weight: 600;
-        }
-      }
-
-      .divider {
-        font-family: var(--font-primary);
-        font-size: 2.5rem;
-        color: var(--color-accent);
-        margin-top: -1rem;
-      }
+      gap: 1rem;
     }
 
-    .cta-button {
-      padding: 1rem 3rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: white;
-      background: var(--gradient-gold);
-      border: none;
-      border-radius: 0;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(rgba(255,255,255,0.2), transparent);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-glow);
-        
-        &::after {
-          opacity: 1;
-        }
-      }
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 5vh;
-      z-index: 10;
+    .time-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--color-text-light);
-      animation: bounce 2s infinite;
-      
-      span {
-        font-size: 0.95rem; /* Increased from 0.8rem */
-        letter-spacing: 3px;
+      min-width: 60px;
+
+      .number {
+        font-family: var(--font-subheading);
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: var(--color-primary);
+        line-height: 1;
+      }
+
+      .label {
+        font-family: var(--font-secondary);
+        font-size: 0.75rem;
         text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-text-light);
+        margin-top: 0.4rem;
+        font-weight: 500;
       }
-      
-      .arrow {
-        font-size: 1.5rem;
-      }
     }
 
-    /* Floating Balloons Decoration */
-    .floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .balloon {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.6;
-      mix-blend-mode: multiply;
-      animation: float 20s infinite ease-in-out;
-    }
-
-    .balloon-1 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle at 30% 30%, var(--color-accent), transparent);
-      top: -50px;
-      right: -100px;
-      animation-duration: 25s;
-    }
-
-    .balloon-2 {
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle at 30% 30%, var(--color-secondary), transparent);
-      top: 20%;
-      left: -50px;
-      animation-duration: 18s;
-      animation-delay: -5s;
-    }
-
-    .balloon-3 {
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle at 30% 30%, var(--color-primary), transparent);
-      bottom: 10%;
-      right: 10%;
-      animation-duration: 22s;
-      animation-delay: -10s;
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.08);
     }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
     }
 
     @keyframes float {
@@ -311,19 +214,6 @@ import { CONTENT } from '../website-content';
       66% { transform: translate(-20px, 20px); }
     }
 
-    @media (max-width: 768px) {
-      .countdown-timer {
-        padding: 1.5rem;
-        gap: 0.5rem;
-        
-        .divider { display: none; }
-        
-        .time-block {
-          min-width: auto;
-          .number { font-size: 1.8rem; }
-        }
-      }
-    }
   `]
 })
 export class HeroComponent implements OnInit, OnDestroy {
@@ -342,7 +232,8 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.targetDate = new Date(this.content.event.date); // Load from config
-    this.updateTimer();
+    // Use setTimeout to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => this.updateTimer(), 0);
     this.intervalId = setInterval(() => {
       this.updateTimer();
     }, 1000);

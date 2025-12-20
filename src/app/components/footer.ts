@@ -133,11 +133,6 @@ import { CONTENT } from '../website-content';
       font-family: var(--font-secondary);
     }
 
-    @media (max-width: 768px) {
-      .footer-logo { font-size: 2.2rem; }
-      .waves { height: 60px; top: -60px; }
-      .wave { height: 60px; }
-    }
   `]
 })
 export class FooterComponent {

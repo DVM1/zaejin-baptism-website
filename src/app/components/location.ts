@@ -17,54 +17,56 @@ export class SafeUrlPipe implements PipeTransform {
   imports: [CommonModule, SafeUrlPipe],
   template: `
     <section class="location-tabbed-section container">
-      <div class="content-wrapper">
-        <h2 class="section-title">Location Guide</h2>
+      <div class="location-container"> <!-- Container for responsive logic -->
+        <div class="content-wrapper glass-card">
+          <h2 class="section-title">Location Guide</h2>
 
-        <!-- Tab Switcher -->
-        <div class="tabs-container">
-          <button class="tab-btn" [class.active]="activeTab() === 'Ceremony'" (click)="setActiveTab('Ceremony')">
-            Ceremony
-          </button>
-          <button class="tab-btn" [class.active]="activeTab() === 'Reception'" (click)="setActiveTab('Reception')">
-            Reception
-          </button>
-        </div>
+          <!-- Tab Switcher - BACK TO TOP -->
+          <div class="tabs-container">
+            <button class="tab-btn" [class.active]="activeTab() === 'Ceremony'" (click)="setActiveTab('Ceremony')">
+              Ceremony
+            </button>
+            <button class="tab-btn" [class.active]="activeTab() === 'Reception'" (click)="setActiveTab('Reception')">
+              Reception
+            </button>
+          </div>
 
-        <!-- All Venue Cards -->
-        <div class="cards-container">
-          <div class="single-card-container" *ngFor="let loc of locations()" [class.active]="loc.type === activeTab()"
-            [class.inactive]="loc.type !== activeTab()">
-            <div class="venue-card glass-card">
-
-              <!-- 1. Header -->
-              <div class="card-header">
-                <div class="icon-circle">{{ loc.icon }}</div>
-                <div class="header-text">
-                  <h3>{{ loc.name }}</h3>
+          <!-- All Venue Cards -->
+          <div class="cards-container">
+            <!-- Active Check - only applied on mobile container -->
+            <div class="single-card-container" *ngFor="let loc of locations()" 
+                 [class.active-card]="loc.type === activeTab()">
+              <div class="venue-card">
+                <!-- Left Side: Information -->
+                <div class="venue-info">
+                  <div class="card-header">
+                    <div class="icon-circle">{{ loc.icon }}</div>
+                    <div class="header-text">
+                      <h3>{{ loc.name }}</h3>
+                    </div>
+                  </div>
+                  
                 </div>
-              </div>
 
-              <!-- 2. Venue Image -->
-              <div class="venue-image">
-                <img [src]="loc.image" alt="Venue Photo" loading="lazy">
-              </div>
-
-
-
-              <!-- 3. Map Preview -->
-              <div class="map-preview">
-                <iframe [src]="loc.mapUrl | safeUrl" width="100%" height="100%" style="border:0;" scrolling="no"
-                  marginheight="0" marginwidth="0" allowfullscreen="" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-              </div>
-
-              <!-- 4. Get Directions Button -->
-              <div class="directions-btn-container">
-                <a [href]="loc.directionLink" target="_blank" class="btn-directions">
-                  <span class="btn-icon">🗺️</span>
-                  Get Directions
-                </a>
+                <!-- Right Side: Visuals -->
+                <div class="venue-visuals">
+                  <div class="venue-image">
+                    <img [src]="loc.image" alt="Venue Photo">
+                  </div>
+                  <div class="map-preview">
+                    <iframe [src]="loc.mapUrl | safeUrl" width="100%" height="100%" style="border:0;" scrolling="no"
+                      marginheight="0" marginwidth="0" allowfullscreen="" loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                  </div>
+                  
+                  <div class="directions-btn-container">
+                    <a [href]="loc.directionLink" target="_blank" class="btn-primary directions-btn">
+                      <span class="btn-icon">🗺️</span>
+                      Get Directions
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -74,78 +76,48 @@ export class SafeUrlPipe implements PipeTransform {
   `,
   styles: [`
     .location-tabbed-section {
-      padding: var(--spacing-section) 2rem;
-      background-color: var(--color-bg); 
-      border-radius: 0; 
-      margin: 2rem auto 4rem;
-      max-width: 1200px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: var(--shadow-sm);
+      margin: 0 auto;
+      padding: var(--spacing-section) 0;
     }
 
-    /* Mobile: Remove container box look, keep padding/content */
-    @media (max-width: 768px) {
-      .location-tabbed-section {
-        margin: 0;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        background: transparent; /* Or var(--color-bg) if needed, but 'no box' implies transparency or full width */
-        padding: 4rem 1rem; /* Adjust padding */
-        width: 100%;
-      }
-      
-      .cards-container {
-        padding: 0;
-      }
-
-      .venue-card {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-        border-radius: 0 !important;
-        backdrop-filter: none !important;
-      }
-      
-      /* Reduce internal padding since there is no card border anymore */
-      .card-header, .venue-image, .map-preview, .directions-btn-container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
-      
-      .venue-image, .directions-btn-container {
-         padding-bottom: 1.5rem !important;
-      }
-      
-      .map-preview {
-         margin-bottom: 2rem !important;
-      }
+    .location-container {
+      container-type: inline-size;
+      width: 100%;
     }
 
     .content-wrapper {
+        padding: 4rem;
+        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
+        box-sizing: border-box;
+        border-radius: 0;
+        margin: 0 auto;
+        background: transparent !important;
+
+        @media(max-width: 900px) {
+          padding: 2.5rem 1.5rem;
+          margin: 1rem 10px;
+          width: calc(100% - 20px);
+        }
     }
 
-    /* Tabs Toggle Styling */
     .tabs-container {
       display: flex;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: none !important;
       padding: 0.5rem;
-      border-radius: 0; /* Square corners */
-      margin-bottom: 3rem;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 0;
+      box-shadow: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 2rem;
     }
 
     .tab-btn {
       padding: 0.8rem 2rem;
-      border-radius: 0; /* Square corners */
+      border-radius: 0;
       border: none;
       background: transparent;
       color: var(--color-text-light);
@@ -153,17 +125,12 @@ export class SafeUrlPipe implements PipeTransform {
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: var(--font-primary);
-      font-size: 1.3rem; /* Increased from 1rem */
+      font-size: var(--font-size-label);
 
       &.active {
         background: var(--color-primary);
         color: white;
         box-shadow: 0 4px 15px rgba(255, 127, 127, 0.3);
-      }
-
-      &:hover:not(.active) {
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--color-primary);
       }
     }
 
@@ -171,127 +138,128 @@ export class SafeUrlPipe implements PipeTransform {
       position: relative;
       width: 100%;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
+    /* Mobile First: Hide inactive, handle tabs */
     .single-card-container {
+      display: none;
       width: 100%;
       animation: fadeIn 0.5s ease-out;
+      
+      &.active-card { display: block; }
+    }
 
-      &.inactive { display: none; }
-      &.active { display: block; }
+    /* HIGH WIDTH LOGIC (SIDE-BY-SIDE + NO TABS) */
+    @container (min-width: 700px) {
+      .tabs-container { display: none; }
+      
+      .cards-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+      }
+
+      .single-card-container {
+        display: block !important; /* Show both cards */
+        flex: 1;
+        max-width: 500px;
+      }
+
+      .venue-card {
+        flex-direction: column !important; /* Stack info/visuals inside the half-width card */
+        height: 100%;
+        background: transparent !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        padding-bottom: 2rem;
+        backdrop-filter: none !important;
+      }
+      
+      .venue-info { flex: 0 0 auto !important; }
+      .venue-visuals { flex: 1 1 auto; width: 100%; }
     }
 
     .venue-card {
-      /* Removed conflicting bg/border/shadow - handled by .glass-card */
-      border-radius: 0; /* Square corners */
+      display: flex;
+      flex-wrap: wrap; 
+      width: 100%;
+      justify-content: center;
+      align-items: flex-start;
+      border-radius: 0;
       overflow: hidden;
+      padding: 0;
+    }
+
+    .venue-info {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      align-items: center;
+    }
+
+    .venue-visuals {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .card-header {
-      padding: 2rem 2rem 1rem;
+      padding: 1rem 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1.2rem;
+      gap: 0.5rem;
 
       .icon-circle {
         width: 56px;
         height: 56px;
-        background: transparent; /* Transparent to blend with parent */
-        border-radius: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.8rem;
-        box-shadow: none; /* Remove shadow since background is transparent */
+        font-size: 2rem;
         color: var(--color-primary);
       }
 
-      .header-text {
-        h3 {
-          font-size: 1.5rem; /* Increased from 1.25rem */
-          margin: 0;
-          color: var(--color-text);
-          font-family: var(--font-secondary);
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          line-height: 1.3;
-        }
-
-        .venue-type {
-          font-size: 1rem; /* Increased from 0.85rem */
-          color: var(--color-text-light);
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
+      .header-text h3 {
+        font-size: var(--font-size-h3);
+        margin: 0;
+        color: var(--color-text);
+        font-family: var(--font-secondary);
       }
     }
 
     .venue-image {
       width: 100%;
-      padding: 0 1.5rem;
-
       img {
         width: 100%;
-        height: 100%;
+        height: 200px;
         object-fit: cover;
-        border-radius: 0;
         box-shadow: var(--shadow-sm);
       }
     }
 
     .map-preview {
-      margin: 1.5rem; /* added margin top for spacing since address is gone */
       aspect-ratio: 16 / 9;
-      border-radius: 0;
-      overflow: hidden;
       background: #f0f0f0;
       border: 1px solid rgba(0, 0, 0, 0.05);
-
       iframe { display: block; height: 100%; }
     }
 
     .directions-btn-container {
-      padding: 0 1.5rem 2rem;
-
-      .btn-directions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 1rem;
-        background: var(--color-primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 0;
-        font-weight: 600;
-        font-size: 1.2rem; /* Increased from 1rem */
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-sm);
-
-        &:hover {
-          background: var(--color-primary-dark);
-          transform: translateY(-2px);
-          box-shadow: var(--shadow-md);
-        }
-      }
+      width: 100%;
+      padding: 0 2rem;
+      .directions-btn { width: 100%; }
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @media (max-width: 640px) {
-      .card-header { padding: 1.5rem 1.5rem 0.5rem; }
-    }
   `]
 })
 export class LocationComponent {
-  // Use signals for reactive state
   activeTab = signal<'Ceremony' | 'Reception'>('Ceremony');
   locations = signal(CONTENT.venues);
 

@@ -18,7 +18,7 @@ import { CONTENT } from '../website-content';
           <h3 class="subsection-title">Color Palette</h3>
           <div class="swatches-grid">
             <div class="swatch-item" *ngFor="let color of content.dressCode.palette">
-              <div class="color-circle" [style.background-color]="color.hex"></div>
+              <div class="color-swatch" [style.background-color]="color.hex"></div>
               <span class="color-name">{{ color.name }}</span>
             </div>
           </div>
@@ -65,22 +65,32 @@ import { CONTENT } from '../website-content';
     }
 
     .content-wrapper {
-      padding: 4rem 2rem;
+      padding: 4rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      border-radius: 0;
+      margin: 0 auto;
+      width: 100%;
+      background: transparent !important;
+
+      @media(max-width: 900px) {
+        padding: 2.5rem 1.5rem;
+        margin: 1rem 10px;
+        width: calc(100% - 20px);
+      }
     }
 
     .section-subtitle {
-      font-size: 1.5rem;
+      font-size: var(--font-size-subtitle);
       color: var(--color-primary-dark);
       margin-bottom: 0.5rem;
-      margin-top: -2rem;
+      margin-top: calc(-1 * var(--spacing-component));
     }
 
     .section-description {
-      font-size: 1.4rem; /* Increased for better readability */
+      font-size: var(--font-size-body);
       line-height: 1.8;
       color: var(--color-text-light);
       margin-bottom: 3rem;
@@ -89,7 +99,7 @@ import { CONTENT } from '../website-content';
 
     .subsection-title {
       font-family: var(--font-subheading);
-      font-size: 1.6rem; /* Increased from 1.25rem */
+      font-size: var(--font-size-h3);
       color: var(--color-text);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
@@ -105,34 +115,51 @@ import { CONTENT } from '../website-content';
     .swatches-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+      justify-content: center; /* Key for centering the bottom 2 */
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 600px; 
+      margin: 0 auto;
+    }
+
+    .swatch-item {
+      /* Force 3 items per row: (100% / 3) - gap allowance */
+      flex: 0 0 calc(33.333% - 1rem); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Desktop: 5 in a row */
+    @media (min-width: 768px) {
+      .swatches-grid {
+        max-width: 1000px;
+      }
+      .swatch-item {
+        flex: 0 0 calc(20% - 1.2rem);
+      }
     }
 
     .swatch-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
 
-    .color-circle {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
+    .color-swatch {
+      width: 65px; /* Reduced from 80px */
+      height: 65px;
+      border-radius: 0;
       box-shadow: var(--shadow-sm);
-      border: 3px solid white;
+      border: 2px solid white;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-      &:hover {
-        transform: scale(1.1);
-        box-shadow: var(--shadow-md);
-      }
     }
 
     .color-name {
       font-family: var(--font-secondary);
-      font-size: 1.25rem; /* Increased further from 1.1rem */
+      font-size: 1.1rem;
       color: var(--color-text);
       font-weight: 500;
     }
@@ -140,24 +167,19 @@ import { CONTENT } from '../website-content';
     /* Guidelines Styles */
     .guidelines-container {
       display: flex;
-      gap: 3rem;
+      flex-wrap: wrap; /* Intelligent stacking without @media */
+      gap: 2.5rem;
       width: 100%;
-      max-width: 800px;
+      max-width: 850px;
       justify-content: center;
-      margin-bottom: 2rem;
-      background: rgba(255,255,255,0.5);
-      padding: 2rem;
-      border-radius: 20px;
     }
 
     .vertical-divider {
-      width: 1px;
-      background: rgba(0,0,0,0.1);
-      align-self: stretch;
+      display: none; /* Hide divider to allow clean wrapping */
     }
 
     .guide-column {
-      flex: 1;
+      flex: 1 1 320px; /* Min-width forces stack on mobile, side-by-side on desktop */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -171,7 +193,7 @@ import { CONTENT } from '../website-content';
 
       h4 {
         font-family: var(--font-subheading);
-        font-size: 1.5rem; /* Increased from 1.2rem */
+        font-size: var(--font-size-subtitle);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -183,7 +205,7 @@ import { CONTENT } from '../website-content';
         align-items: center;
         width: 32px;
         height: 32px;
-        border-radius: 50%;
+        border-radius: 0;
         color: white;
         font-size: 1rem;
         font-weight: bold;
@@ -206,9 +228,8 @@ import { CONTENT } from '../website-content';
       list-style: none;
       
       li {
-        margin-bottom: 0.8rem;
         font-family: var(--font-body);
-        font-size: 1.3rem; /* Increased from 1.1rem */
+        font-size: var(--font-size-label);
         color: var(--color-text);
       }
     }
@@ -227,26 +248,6 @@ import { CONTENT } from '../website-content';
       }
     }
 
-    @media (max-width: 768px) {
-      .guidelines-container {
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .vertical-divider {
-        width: 100%;
-        height: 1px;
-      }
-      
-      .swatches-grid {
-        gap: 1.5rem;
-      }
-      
-      .color-circle {
-        width: 60px;
-        height: 60px;
-      }
-    }
   `]
 })
 export class DressCodeComponent {
