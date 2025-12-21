@@ -109,7 +109,7 @@ register();
       </main>
 
       <footer>
-        <p>With Love, The Maquiling Family</p>
+        <p>With Love, Maquiling Family</p>
       </footer>
     </div>
   `,
