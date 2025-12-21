@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
         
         <!-- Address Label -->
         <div class="from-address">
-          From: The Maquiling Family
+          From: Maquiling Family
         </div>
 
         <div class="letter-content">

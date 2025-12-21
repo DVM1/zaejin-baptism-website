@@ -42,7 +42,7 @@ import { CONTENT } from '../website-content';
 
         <div class="signature">
           <p>With Love, </p>
-          <p class="family-name"> The Maquiling Family </p>
+          <p class="family-name"> Maquiling Family </p>
         </div>
       </div>
 
