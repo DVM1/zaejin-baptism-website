@@ -10,9 +10,9 @@ export const CONTENT = {
     },
     intro: {
         title: 'The Meaning of Zaejin',
-        verse: '"She is a gift from the stars, a dream we never want to wake up from."',
+        verse: '"She is a gift from the stars, a celestial spark in our world."',
         verseReference: '— A Parent\'s Promise',
-        message: 'Zaejin Astraea represents our "Bright Star" and "Justice". Her name was chosen to reflect the light she brought into our lives during a time when we needed it most. Astraea, the star-maiden, reminds us that even in the vastness of the universe, she is our guiding light.'
+        message: 'Zaejin Astraea, our "Bright Star" and "Justice," was named to reflect the light she brought into our lives when we needed it most. Like Astraea, the star-maiden of old, she remains our guiding light—a reminder that even in the vastness of the universe, our greatest blessing is right here with us.'
     },
     timeline: [
         {
@@ -71,7 +71,7 @@ export const CONTENT = {
     dressCode: {
         title: 'Attire Guide',
         subtitle: '',
-        description: "We're keeping this party simple and laid back, so just come in your casual attire and feel free to add some of the colors from our palette.",
+        description: "We invite you to come in your Sunday Best or Smart Casual attire, reflecting the joy and elegance of this double celebration.",
         palette: [
             { name: 'Dusty Rose', hex: '#DCA4A4' },
             { name: 'Sage Green', hex: '#A8C3A8' },
@@ -90,15 +90,28 @@ export const CONTENT = {
             'Bright Neon Colors',
             'All Black / Dark Colors'
         ],
-        note: 'Please help us maintain the solemnity and elegance of the event.'
+        note: 'Thank you for helping us maintain the joy and elegance of this special day.'
     },
     godparents: [
-        { name: 'Ninong [Name 1]', role: 'Godfather' },
-        { name: 'Ninang [Name 1]', role: 'Godmother' },
-        { name: 'Ninong [Name 2]', role: 'Godfather' },
-        { name: 'Ninang [Name 2]', role: 'Godmother' },
-        { name: 'Ninong [Name 3]', role: 'Godfather' },
-        { name: 'Ninang [Name 3]', role: 'Godmother' }
+        { name: 'Kath Unay', role: 'Ninang' },
+        { name: 'Charleine Brilliantes', role: 'Ninang' },
+        { name: 'Arlene Neria', role: 'Ninang' },
+        { name: 'Nelma Ramos', role: 'Ninang' },
+        { name: 'Grazie Galin', role: 'Ninang' },
+        { name: 'Jenny Faustino', role: 'Ninang' },
+        { name: 'Angelie Alde', role: 'Ninang' },
+        { name: 'Winnielyn Gapas', role: 'Ninang' },
+        { name: 'Anna Rubio', role: 'Ninang' },
+        { name: 'Toni Paula', role: 'Ninang' },
+        { name: 'Mikee Balando', role: 'Ninang' },
+        { name: 'Demeven', role: 'Ninong' },
+        { name: 'Erron Laurio', role: 'Ninong' },
+        { name: 'Florrelle Mari Navarro', role: 'Ninong' },
+        { name: 'Bryan Santia', role: 'Ninong' },
+        { name: 'Christian Sumio', role: 'Ninong' },
+        { name: 'Michael Flores', role: 'Ninong' },
+        { name: 'Jerome Razid', role: 'Ninong' },
+        { name: 'Jho Guerero', role: 'Ninong' },
     ],
     gallery: [
         'assets/images/gallery/1.jpg',

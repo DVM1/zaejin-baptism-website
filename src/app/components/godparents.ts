@@ -84,7 +84,6 @@ import { CONTENT } from '../website-content';
       font-family: var(--font-body);
       font-size: 1rem;
       color: var(--color-text-light);
-      text-transform: uppercase;
       letter-spacing: 1px;
       margin: 0;
     }

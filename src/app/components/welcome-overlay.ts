@@ -15,8 +15,8 @@ import { CommonModule } from '@angular/common';
         </div>
         
         <!-- Address Label -->
-        <div class="to-address">
-          To: The Maquiling Family
+        <div class="from-address">
+          From: The Maquiling Family
         </div>
 
         <div class="letter-content">
@@ -90,7 +90,7 @@ import { CommonModule } from '@angular/common';
     }
     
     /* "To" Stamp */
-    .to-address {
+    .from-address {
       position: absolute;
       top: 30px;
       left: 20px;
